@@ -77,10 +77,10 @@ for(int i=0; i<cal_values.size(); i++){
     for(int j=0; j<digits.size(); j++){
         pos=cal_values[i].find(digits[j]);
 
-        if(pos < first_word_pos[0] && ){
+        if(pos < first_word_pos[0] && pos!=std::string::npos){
             first_word_pos={pos, j};
         };
-        if(pos > second_word_pos[0] && ){
+        if(pos > second_word_pos[0] && pos!=std::string::npos){
             second_word_pos={pos, j};
         };
 
@@ -94,7 +94,7 @@ for(int i=0; i<cal_values.size(); i++){
     if(second_word_pos[0] > second_digit_pos){
         second_digit=digits_ID[digits[second_word_pos[1]]];
     };
-    std::cout << std::stoi(first_digit+second_digit) << std::endl;
+
     cal_sum+=std::stoi(first_digit+second_digit);
 };
 
