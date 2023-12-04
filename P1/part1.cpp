@@ -45,17 +45,7 @@ int cal_sum=0, first_digit_pos, second_digit_pos, pos;
 bool first_digit_found;
 std::string first_digit, second_digit;
 
-std::vector<std::string> digits{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-std::vector<int> first_word_pos, second_word_pos;
-
-int k=1;
-std::map<std::string, std::string> digits_ID;
-for(const auto& d : digits){
-    digits_ID[d]=std::to_string(k++);
-};
-
-//for(int i=0; i<cal_values.size(); i++){
-int i=1;
+for(int i=0; i<cal_values.size(); i++){
     first_digit_found=false;
     for(int j=0; j<cal_values[i].length(); j++){
 
@@ -72,32 +62,8 @@ int i=1;
         };
     };
 
-    // Finds first and last words
-    first_word_pos[0]=INT_MAX;
-    second_word_pos[0]=0;
-    for(int j=0; j<digits.size(); j++){
-        pos=cal_values[i].find(digits[j]);
-
-        if(pos < first_word_pos[0]){
-            first_word_pos={pos, j};
-        };
-        if(pos > second_word_pos[0]){
-            second_word_pos={pos, j};
-        };
-
-    };
-
-    // Work out if the first word is before the first digit, and if the second word is after the second digit
-    if(first_word_pos[0] < first_digit_pos){
-        first_digit=digits_ID[digits[first_word_pos[1]]];
-    };
-
-    if(second_word_pos[0] > second_digit_pos){
-        second_digit=digits_ID[digits[second_word_pos[1]]];
-    };
-    std::cout << std::stoi(first_digit+second_digit) << std::endl;
     cal_sum+=std::stoi(first_digit+second_digit);
-//};
+};
 
 std::cout << cal_sum << std::endl;
 
